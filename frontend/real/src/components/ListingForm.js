@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Oval } from 'react-loader-spinner';
+import {Oval} from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 
 const ListingForm = (props) => {
@@ -13,7 +13,7 @@ const ListingForm = (props) => {
         sqft: '1000+',
         days_listed: '1 or less',
         has_photos: '1+',
-        open_house: 'true',
+        open_house: 'false',
         keywords: ''
     });
 
@@ -21,14 +21,10 @@ const ListingForm = (props) => {
 
     const [loading, setLoading] = useState(false);
 
-    const onChange = e => {
-        const value = e.target.type === 'checkbox' ? e.target.checked.toString() : e.target.value;
-        setFormData({ ...formData, [e.target.name]: value });
-    };
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log("Submitting form with data:", formData);
 
         const config = {
             headers: {
@@ -37,18 +33,16 @@ const ListingForm = (props) => {
         };
 
         setLoading(true);
-        axios.post(`http://localhost:8000/api/listings/search`, { sale_type, price, bedrooms, home_type, bathrooms, sqft, days_listed, has_photos, open_house, keywords }, config)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/listings/search`, { sale_type, price, bedrooms, home_type, bathrooms, sqft, days_listed, has_photos, open_house, keywords }, config)
         .then(res => {
             setLoading(false);
-            console.log("Response data:", res.data);
             props.setListings(res.data);
             window.scrollTo(0, 0);
         })
         .catch(err => {
             setLoading(false);
-            console.error("Error fetching listings:", err);
             window.scrollTo(0, 0);
-        });
+        })
     };
 
     return (
@@ -177,11 +171,13 @@ const ListingForm = (props) => {
 };
 
 ListingForm.propTypes = {
-    setListings: PropTypes.func.isRequired,
-   
+    setListings: PropTypes.func.isRequired
 };
 
 export default ListingForm;
+
+
+
 
 
 

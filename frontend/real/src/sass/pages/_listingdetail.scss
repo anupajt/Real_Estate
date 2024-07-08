@@ -1,69 +1,343 @@
-.listingdetail {
-    padding-bottom: 4rem;
+$listings-bg-color: rgba(29, 28, 28, 0.8);
+$listings-primary-color: #3498db;
+$listings-secondary-color: #2ecc71;
+$listings-tertiary-color: #e74c3c;
+$listings-light-grey: #0b0c0c;
+$listings-dark-grey: #34495e;
 
+.listingdetail {
+    font-family: $font-primary;
+    
     &_header {
-        background-color: rgba($color-primary, 0.45);
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem 0;
+        background-color: $listings-light-grey; // Changed to light grey
+        color: $listings-dark-grey; // Changed text color to dark grey for better contrast
+        text-shadow: 2px 2px 4px rgba(8, 8, 8, 0.5);
+        color: $listings-primary-color;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $listings-secondary-color;
+    }
+
     }
     &_title {
         font-size: 4.2rem;
-        color: $color-white;
         margin-bottom: 2rem;
         font-weight: 200;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
     }
     &_location {
         font-size: 2.4rem;
-        color: $color-white;
         font-weight: 200;
+        letter-spacing: 1px;
     }
     &_breadcrumb {
-        background-color: $color-grey-light;
+        background-color: $listings-light-grey;
         padding: 2rem 4rem;
         font-size: 1.6rem;
         margin-top: 2rem;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: fadeIn 1s ease-out;
 
         &_link {
-            color: $color-primary;
+            color: $listings-primary-color;
             text-decoration: none;
+            transition: color 0.3s ease;
 
             &:hover {
-                color: $color-tertiary;
+                color: $listings-secondary-color;
             }
         }
     }
     &_display {
         width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border-radius: 5px;
+        margin-bottom: 2rem;
+        animation: zoomIn 1s ease-out;
 
         &_image {
             width: 100%;
+            height: 300px;
+            object-fit: fill;
+            transition: transform 0.3s ease;
+            display: inline;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            &_main {
+                width: 100%;
+                height: 550px;
+                object-fit: fill;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+
+            &_real {
+                width: 100%;
+                height: 300px;
+                object-fit: fill;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
         }
     }
-    &_realtors {
+    &_realtor {
         font-size: 2.4rem;
-        color: $color-primary;
+        color: $color-black;
         margin-top: 2rem;
         margin-bottom: 1rem;
+        animation: fadeInUp 1s ease-out;
     }
     &_contact {
         font-size: 1.6rem;
         color: $color-tertiary;
     }
     &_about {
-        font-size: 1.6rem;
-        margin-top: 1rem;
+        font-size: 1.3rem;
+        line-height: 1.2;        
+        width: 100%;
+        height: 143px;
+        overflow: auto;
     }
     &_list {
         list-style: none;
         font-size: 1.6rem;
-        color: $color-tertiary;
+        color: $listings-dark-grey;
+        padding: 0;
+        margin: 0;
 
         &_item {
             margin-bottom: 1rem;
+            color: #3498db;
+            background: $listings-light-grey;
+            padding: 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+
+            &:hover {
+                background: $listings-bg-color;
+                color: $listings-light-grey;
+            }
         }
     }
     &_description {
         font-size: 1.6rem;
+        line-height: 1.5;
+        color: $listings-dark-grey;
+        margin-top: 2rem;
+        height: 150px;
+        overflow: auto;
     }
 }
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// $listings-bg-color: rgba(34, 34, 34, 0.8);
+// $listings-primary-color: #3498db;
+// $listings-secondary-color: #2ecc71;
+// $listings-tertiary-color: #e74c3c;
+// $listings-light-grey: #ecf0f1;
+// $listings-dark-grey: #34495e;
+
+// .listingdetail {
+//     padding-bottom: 4rem;
+
+//     &_header {
+//         background-color: $listings-bg-color;
+//         padding: 4rem 0;
+//         text-align: center;
+//         color: $listings-light-grey;
+//         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     }
+//     &_title {
+//         font-size: 4.2rem;
+//         margin-bottom: 2rem;
+//         font-weight: 200;
+//         letter-spacing: 1.5px;
+//         text-transform: uppercase;
+//     }
+//     &_location {
+//         font-size: 2.4rem;
+//         font-weight: 200;
+//         letter-spacing: 1px;
+//     }
+//     &_breadcrumb {
+//         background-color: $listings-light-grey;
+//         padding: 2rem 4rem;
+//         font-size: 1.6rem;
+//         margin-top: 2rem;
+//         border-radius: 5px;
+
+//         &_link {
+//             color: $listings-primary-color;
+//             text-decoration: none;
+//             transition: color 0.3s ease;
+
+//             &:hover {
+//                 color: $listings-secondary-color;
+//             }
+//         }
+//     }
+//     &_display {
+//         width: 100%;
+//         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//         overflow: hidden;
+//         border-radius: 5px;
+//         margin-bottom: 2rem;
+
+//         &_image {
+//             width: 100%;
+//             height: 300px;
+//             object-fit: fill;
+//             transition: transform 0.3s ease;
+
+//             &:hover {
+//                 transform: scale(1.05);
+//             }
+
+//             &_main {
+//                 width: 100%;
+//                 height: 550px;
+//                 object-fit: fill;
+//                 transition: transform 0.3s ease;
+
+//                 &:hover {
+//                     transform: scale(1.05);
+//                 }
+//             }
+
+//             &_real {
+//                 width: 100%;
+//                 height: 300px;
+//                 object-fit: fill;
+//                 transition: transform 0.3s ease;
+
+//                 &:hover {
+//                     transform: scale(1.05);
+//                 }
+//             }
+//         }
+//     }
+//     &_realtor {
+//         font-size: 2.4rem;
+//         color: $listings-primary-color;
+//         margin-top: 2rem;
+//         margin-bottom: 1rem;
+//     }
+//     &_contact {
+//         font-size: 1.6rem;
+//         color: $listings-tertiary-color;
+//     }
+//     &_about {
+//         font-size: 1.3rem;
+//         line-height: 1.2;
+//         width: 100%;
+//         height: 150px;
+//         overflow: auto;
+//     }
+//     &_list {
+//         list-style: none;
+//         font-size: 1.6rem;
+//         color: $listings-dark-grey;
+//         padding: 0;
+//         margin: 0;
+
+//         &_item {
+//             margin-bottom: 1rem;
+//             color: #3498db;
+//             background: $listings-light-grey;
+//             padding: 1rem;
+//             border-radius: 5px;
+//             transition: background 0.3s ease;
+
+//             &:hover {
+//                 background: $listings-bg-color;
+//                 color: $listings-light-grey;
+//             }
+//         }
+//     }
+//     &_description {
+//         font-size: 1.6rem;
+//         line-height: 1.5;
+//         color: $listings-dark-grey;
+//         margin-top: 2rem;
+//         height: 150px;
+//         overflow: auto;
+//     }
+// }
+
+
+
+
+
+
+
+

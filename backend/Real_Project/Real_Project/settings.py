@@ -156,6 +156,8 @@ EMAIL_HOST_PASSWORD = 'mljw vtzw aixy fogv'
 EMAIL_USE_TLS = True
 
 
+AUTH_USER_MODEL = 'accounts.UserAccount'
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',

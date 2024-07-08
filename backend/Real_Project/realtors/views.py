@@ -16,6 +16,7 @@ class RealtorListView(ListAPIView):
 class RealtorView(RetrieveAPIView):
     queryset = Realtor.objects.all()
     serializer_class = RealtorSerializer
+    lookup_field = 'id'
 
 class TopSellerView(ListAPIView):
     permission_classes = (permissions.AllowAny, )

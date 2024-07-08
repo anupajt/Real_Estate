@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -7,16 +9,19 @@ const Card = (props) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     };
 
-    // console.log("Image URL:", props.photo_main);
+    const getPhotoUrl = (photo) => {
+        if (photo.startsWith('http')) {
+            return photo;
+        } else {
+            return `${process.env.REACT_APP_API_URL}${photo}`;
+        }
+    };
+
     return (
         <div className='card'>
             <h3 className='card_title'>{props.title}</h3>
             <div className='card_header'>
-                <img
-                    className='card_header_photo'
-                    src={`http://localhost:8000${props.photo_main}`}
-                    alt='House'
-                />
+                <img className='card_header_photo' src={getPhotoUrl(props.photo_main)} alt='House' />
             </div>
             <p className='card_location'>{props.address}, {props.city}, {props.state}</p>
             <div className='row'>
@@ -52,6 +57,4 @@ Card.propTypes = {
 };
 
 export default Card;
-
-
 

@@ -9,13 +9,13 @@ import PropTypes from 'prop-types';
 
 const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
   const authLinks = (
-    <a className='navbar_top_auth_link' onClick={logout} href='#!'>SignOut</a>
+    <a className='navbar_top_auth_link' onClick={logout} href='#!'>SIGNOUT</a>
   
   );
   const guestLinks = (
     <Fragment>
-       <Link className="navbar_top_auth_link" to='/signin' >SignIn</Link>
-       <Link className="navbar_top_auth_link" to='/signup' >SignUp</Link>
+       <Link className="navbar_top_auth_link" to='/signin' >SIGNIN</Link>
+       <Link className="navbar_top_auth_link" to='/signup' >SIGNUP</Link>
     </Fragment>
   )
   return(
@@ -23,7 +23,7 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
        <nav className="navbar">
           <div className="navbar_top">
              <div className="navbar_top_logo">
-                <Link className="navbar_top_logo_link" to='/'>Real Estate</Link>
+                <Link className="navbar_top_logo_link" to='/'>REAL ESTATE</Link>
              </div>
              <div className="navbar_top_auth">
                 { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks}</Fragment>)}
@@ -31,16 +31,16 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
           </div>
           <div className="navbar_bottom">
              <li className="navbar_bottom_item">
-                 <NavLink className='navbar_bottom_item_link' exact to='/'>Home</NavLink>
+                 <NavLink className='navbar_bottom_item_link' exact to='/'>HOME</NavLink>
              </li>
              <li className="navbar_bottom_item">
-                 <NavLink className='navbar_bottom_item_link' exact to='/listings'>Listings</NavLink>
+                 <NavLink className='navbar_bottom_item_link' exact to='/listings'>LISTINGS</NavLink>
              </li>
              <li className="navbar_bottom_item">
-                 <NavLink className='navbar_bottom_item_link' exact to='/about'>About</NavLink>
+                 <NavLink className='navbar_bottom_item_link' exact to='/about'>ABOUT</NavLink>
              </li>
              <li className="navbar_bottom_item">
-                 <NavLink className='navbar_bottom_item_link' exact to='/contact'>Contact</NavLink>
+                 <NavLink className='navbar_bottom_item_link' exact to='/contact'>CONTACT US</NavLink>
              </li>
           </div>
        </nav>

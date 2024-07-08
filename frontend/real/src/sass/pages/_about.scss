@@ -1,0 +1,181 @@
+$font-primary: 'Arial, sans-serif';
+$font-secondary: 'Georgia, serif';
+$color-primary: #989c97;
+$color-secondary: #555;
+$color-tertiary: #777;
+$color-white: #fff;
+$color-paragraph: #444;
+$listings-light-grey: #161515;
+$listings-dark-grey: #2c3e50; 
+.about {
+    font-family: $font-primary;
+
+    &_header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem 0;
+        background-color: $listings-light-grey;
+        color: $listings-dark-grey; 
+        text-shadow: 2px 2px 4px rgba(8, 8, 8, 0.5);
+        
+    }
+
+
+    &_info, &_team {
+        margin-top: 4rem;
+        padding: 2rem;
+        background-color: lighten($color-tertiary, 40%);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    &_heading {
+        font-size: 4.2rem;
+        color: $color-white;
+        font-weight: 200;
+    }
+
+    &_subheading {
+        text-align: center;
+        font-size: 3.2rem;
+        color: $color-primary;
+        animation: showup 3s infinite;
+        
+        @keyframes showup {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    }
+
+    &_paragraph {
+        font-size: 1.6rem;
+        color: $color-paragraph;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    &_display {
+        width: 100%;
+        
+        border-radius: 8px;
+
+        &_houseimage {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+        &_image_real {
+            margin-top: 2rem;
+            width: 100%;
+            height: 350px;
+            transition: transform 0.3s ease;
+            display: block;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }           
+    }
+    &_realtor_name{
+        text-align: center;
+        font-size: 3.2rem;
+        margin-top: 1rem; 
+        font-weight: 1rem;      
+        color: $color-paragraph
+    }
+    &_realtor_contact {
+        text-align: center;
+        font-size: 1.7rem;
+        margin-top: 0rem; 
+        font-weight: 1rem;      
+        color: $color-paragraph;
+    }
+    &_realtor_desc {
+        padding-top: 1rem;
+        font-size: 1.6rem;
+        height: 200px;
+        overflow: auto;
+    }
+
+    &_realtor {
+        font-family: $font-secondary;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    &_realtor {
+        text-align: center;
+        padding-top: 5rem;
+        font-size: 1.8rem;
+        font-weight: 200;
+        color: $color-primary;
+    }
+
+    &_topseller {
+        text-align: center;
+        font-size: 3.2rem;
+        margin-top: 0rem; 
+        font-weight: 3rem;      
+        color: $color-paragraph;  
+        
+        &_name {
+            text-align: center;
+            padding: 3rem;
+            font-size: 2.5rem;
+        }
+        &_contact {
+            text-align: center;
+            font-size: 2rem;
+            padding: 0rem;
+        }
+        &_image {
+            width: 100%;
+            padding-top: 1rem;
+            transition: transform 0.3s ease;
+            display: block;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+        &_desc {
+            font-size: 1.6rem;
+            color: $color-paragraph;
+            padding-top: 2rem;
+            height: 310px;
+            overflow: auto;
+        }
+    }
+    
+    &_contact {
+        text-align: center;
+        font-size: 1.6rem;
+        color: $color-tertiary;
+    }
+
+    &_about {
+       
+        font-size: 1.6rem;
+        color: $color-paragraph;
+        height: 200px;
+        overflow: auto;
+    }
+}
+
+
+
+
+
+
+
+
+

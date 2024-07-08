@@ -1,17 +1,45 @@
+$color-primary: #3498db;
+$color-secondary: #2ecc71;
+$color-tertiary: #95a5a6;
+$color-green: #27ae60;
+$color-grey-light: #ecf0f1;
+$color-white: #ffffff;
+
+@mixin transition($property) {
+    transition: $property 0.3s ease;
+}
+
+@mixin shadow($level: 1) {
+    @if $level == 1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    } @else if $level == 2 {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    } @else if $level == 3 {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+}
+
 .card {
     padding: 4rem 3rem;
     background-color: $color-grey-light;
     border-radius: 0.5rem;
     height: fit-content;
+    @include shadow(2);
+    @include transition(all);
+
+    &:hover {
+        transform: translateY(-5px);
+        @include shadow(3);
+    }
 
     &_header {
         width: 100%;
-        
 
         &_photo {
             width: 100%;
-            height: 350px;
-            background-color: $color-grey-light;
+            height: 200px;
+            object-fit: fill;
+            border-radius: 0.5rem;
         }
     }
 
@@ -55,11 +83,14 @@
         padding: 1rem 1.5rem;
         border: 0.1rem solid $color-secondary;
         text-decoration: none;
+        border-radius: 0.5rem;
+        @include transition(all);
 
         &:hover {
             color: $color-white;
-            border: 0.1rem solid $color-secondary;
             background-color: $color-primary;
+            border-color: $color-primary;
         }
     }
 }
+

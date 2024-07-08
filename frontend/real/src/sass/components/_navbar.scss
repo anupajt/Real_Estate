@@ -1,58 +1,287 @@
-.navbar{
-    width: 100%;
+// Variables
+$color-primary: #3498db;
+$color-secondary: #2ecc71;
+$color-tertiary: #95a5a6;
+$color-quaternary: #5c5b52;
+$color-white: #ffffff;
+$color-black: #333333;
+$color-yellow:rgb(27, 135, 143)6;
+$font-family: 'Arial, sans-serif'; 
 
-    &_top{
+// Mixins
+@mixin transition($property) {
+    transition: $property 0.3s ease;
+}
+
+@mixin shadow($level: 1) {
+    @if $level == 1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    } @else if $level == 2 {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    } @else if $level == 3 {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+}
+
+@mixin gradient($start, $end) {
+    background: linear-gradient(to right, $start, $end);
+}
+
+@mixin hoverEffect($color) {
+    &:hover {
+        color: $color;
+        text-shadow: 0 0 10px rgba($color, 0.8);
+    }
+}
+
+.navbar {
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+    font-family: $font-family;
+
+    &_top {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
         height: 10rem;
-        background-color: $color-primary;
+        @include gradient($color-primary, $color-secondary);
+        @include shadow(2);
 
-        &_logo{
+        &_logo {
             margin-left: 4rem;
 
-            &_link{
-                font-size: 2.8rem;
+            &_link {
+                font-family: "Exo", sans-serif;
+                font-weight: bold;
+                font-size: 3.5rem; 
                 color: $color-white;
                 text-decoration: none;
+                @include transition(all);
+                @include hoverEffect($color-quaternary);
             }
         }
-        &_auth{
+
+        &_auth {
             margin-right: 4rem;
 
-            &_link{
-                font-size: 1.8rem;
+            &_link {
+                font-size: 2rem; // Increased font size
                 color: $color-white;
                 text-decoration: none;
+                cursor: pointer;
+                @include transition(all);
+                @include hoverEffect($color-quaternary);
 
-                &:first-of-type{
+                &:first-of-type {
                     margin-right: 8rem;
                 }
             }
         }
     }
 
-    &_bottom{
+    &_bottom {
         display: flex;
         justify-content: space-around;
         align-items: center;
         width: 100%;
         height: 7rem;
-        background-color: $color-tertiary;
+        @include gradient($color-tertiary, $color-primary);
+        @include shadow(2);
 
-        &_item{
+        &_item {
             list-style: none;
 
-            &_link{
-                font-size: 1.8rem;
+            &_link {
+                font-size: 2rem; // Increased font size
                 color: $color-white;
                 text-decoration: none;
-
-                &:hover{
-                    color: $color-quaternary;
-                }
+                @include transition(all);
+                @include hoverEffect($color-quaternary);
             }
         }
     }
 }
+
+// Responsive Design
+@media (max-width: 768px) {
+    .navbar {
+        &_top {
+            flex-direction: column;
+            height: auto;
+            padding: 2rem;
+
+            &_logo {
+                margin-left: 0;
+                margin-bottom: 1rem;
+            }
+
+            &_auth {
+                margin-right: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                &_link {
+                    margin-right: 0 !important;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+        &_bottom {
+            flex-direction: column;
+            height: auto;
+            padding: 2rem;
+
+            &_item {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+// $color-primary: #3498db;
+// $color-secondary: #2ecc71;
+// $color-tertiary: #95a5a6;
+// $color-quaternary: #e74c3c;
+// $color-white: #ffffff;
+// $color-black: #333333;
+// $color-yellow: #ffff85;
+
+// @mixin transition($property) {
+//     transition: $property 0.3s ease;
+// }
+
+// @mixin shadow($level: 1) {
+//     @if $level == 1 {
+//         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+//     } @else if $level == 2 {
+//         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+//     } @else if $level == 3 {
+//         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+//     }
+// }
+
+// @mixin gradient($start, $end) {
+//     background: linear-gradient(to right, $start, $end);
+// }
+
+// @mixin hoverEffect($color) {
+//     &:hover {
+//         color: $color;
+//         text-shadow: 0 0 10px rgba($color, 0.8);
+//     }
+// }
+
+// .navbar {
+//     width: 100%;
+//     position: relative;
+//     z-index: 1000;
+
+//     &_top {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         width: 100%;
+//         height: 10rem;
+//         @include gradient($color-primary, $color-secondary);
+//         @include shadow(2);
+
+//         &_logo {
+//             margin-left: 4rem;
+
+//             &_link {
+//                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//                 font-weight: 2000;
+//                 font-size: 2.8rem;
+//                 color: $color-white;
+//                 text-decoration: none;
+//                 @include transition(all);
+//                 @include hoverEffect($color-yellow);
+//             }
+//         }
+
+//         &_auth {
+//             margin-right: 4rem;
+
+//             &_link {
+//                 font-size: 1.8rem;
+//                 color: $color-white;
+//                 text-decoration: none;
+//                 cursor: pointer;
+//                 @include transition(all);
+//                 @include hoverEffect($color-quaternary);
+
+//                 &:first-of-type {
+//                     margin-right: 8rem;
+//                 }
+//             }
+//         }
+//     }
+
+//     &_bottom {
+//         display: flex;
+//         justify-content: space-around;
+//         align-items: center;
+//         width: 100%;
+//         height: 7rem;
+//         @include gradient($color-tertiary, $color-primary);
+//         @include shadow(2);
+
+//         &_item {
+//             list-style: none;
+
+//             &_link {
+//                 font-size: 1.8rem;
+//                 color: $color-white;
+//                 text-decoration: none;
+//                 @include transition(all);
+//                 @include hoverEffect($color-quaternary);
+//             }
+//         }
+//     }
+// }
+
+// // Responsive Design
+// @media (max-width: 768px) {
+//     .navbar {
+//         &_top {
+//             flex-direction: column;
+//             height: auto;
+//             padding: 2rem;
+
+//             &_logo {
+//                 margin-left: 0;
+//                 margin-bottom: 1rem;
+//             }
+
+//             &_auth {
+//                 margin-right: 0;
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items: center;
+
+//                 &_link {
+//                     margin-right: 0 !important;
+//                     margin-bottom: 1rem;
+//                 }
+//             }
+//         }
+
+//         &_bottom {
+//             flex-direction: column;
+//             height: auto;
+//             padding: 2rem;
+
+//             &_item {
+//                 margin-bottom: 1rem;
+//             }
+//         }
+//     }
+// }
